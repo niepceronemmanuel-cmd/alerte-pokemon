@@ -1,0 +1,70 @@
+# =====================================================================
+#  Surveillance de stock – Pokémon 30 ans
+#  Tu peux modifier ce fichier directement sur GitHub (icône crayon).
+# =====================================================================
+
+# Un produit n'est retenu que si son titre :
+#   - contient TOUS les mots de "doit_contenir"
+#   - contient AU MOINS UN des mots de "un_de"
+#   - ne contient AUCUN mot de "exclure"
+# Majuscules et accents sont ignorés (« 30ᵉ Anniversaire » = « 30e anniversaire »).
+filtre:
+  doit_contenir: ["pokemon"]
+  un_de:
+    - "30e anniversaire"
+    - "30eme anniversaire"
+    - "30 ans"
+    - "30th"
+    - "celebration des 30"
+  exclure:
+    - "occasion"
+    - "reconditionne"
+    # - "peluche"      # décommente pour ignorer les non-cartes
+    # - "figurine"
+
+# Nombre max de fiches produits ouvertes par enseigne à chaque passage
+max_produits_par_site: 8
+
+# ---------------------------------------------------------------------
+# Pages de recherche à surveiller.
+# Si une URL ne marche pas : va sur le site, cherche « pokemon 30e anniversaire »,
+# copie l'adresse de la page de résultats et colle-la ici.
+# js: true = ouvre la page dans un vrai navigateur (plus lent, mais nécessaire
+#            pour les sites qui affichent les produits en JavaScript).
+# ---------------------------------------------------------------------
+recherches:
+  - nom: Amazon
+    url: https://www.amazon.fr/s?k=pokemon+30e+anniversaire
+  - nom: Fnac
+    url: https://www.fnac.com/SearchResult/ResultList.aspx?Search=pokemon+30e+anniversaire
+  - nom: Cultura
+    url: https://www.cultura.com/search/results?search_query=pokemon%2030e%20anniversaire
+  - nom: Carrefour
+    url: https://www.carrefour.fr/s?q=pokemon+30e+anniversaire
+    js: true
+  - nom: Leclerc
+    url: https://www.e.leclerc/recherche?q=pokemon%2030e%20anniversaire
+    js: true
+  - nom: Smyths
+    url: https://www.smythstoys.com/fr/fr-fr/search/?text=pokemon%2030e%20anniversaire
+  - nom: King Jouet          # URL à vérifier
+    url: https://www.king-jouet.com/recherche.htm?q=pokemon%2030e%20anniversaire
+  - nom: JouéClub            # URL à vérifier
+    url: https://www.joueclub.fr/recherche?q=pokemon+30e+anniversaire
+  - nom: Micromania          # URL à vérifier
+    url: https://www.micromania.fr/search?q=pokemon+30e+anniversaire
+  - nom: Auchan              # URL à vérifier
+    url: https://www.auchan.fr/recherche?text=pokemon+30e+anniversaire
+    js: true
+
+# ---------------------------------------------------------------------
+# (Optionnel) Fiches produits précises à surveiller en plus.
+# Pratique pour un produit que tu as repéré et qui affiche « rupture ».
+# texte_dispo / texte_rupture : à préciser seulement si la détection auto se trompe.
+# ---------------------------------------------------------------------
+produits:
+  # - nom: ETB 30e Anniversaire
+  #   site: Fnac
+  #   url: https://www.fnac.com/a00000000/...
+  #   js: false
+  #   texte_rupture: ["Victime de son succès"]
